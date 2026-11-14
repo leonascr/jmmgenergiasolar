@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JMMG Energia Solar · Geração própria de energia no DF</title>
+<meta name="description" content="Energia solar fotovoltaica no Distrito Federal: casas, empresas e usinas no solo. Projeto, instalação e limpeza de placas. Orçamento pelo WhatsApp.">
+<meta name="theme-color" content="#0f3311">
+<meta property="og:title" content="JMMG Energia Solar">
+<meta property="og:description" content="Geração própria de energia para casas, empresas e propriedades rurais no DF. Orçamento pelo WhatsApp.">
+<meta property="og:image" content="assets/web/og.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d5c1f'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='900' font-size='15' fill='white' text-anchor='middle'%3EJ%3C/text%3E%3C/svg%3E">
+<link rel="preload" as="image" href="assets/web/hero.webp" imagesrcset="assets/web/hero-900.webp 900w, assets/web/hero.webp 1672w" imagesizes="100vw">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --verde: #1d5c1f; --verde-2: #174a19; --verde-escuro: #0f3311; --noite: #08200a;
+  --creme: #f6f7f2; --verde-claro: #e9f1e4; --linha: #dbe5d5;
+  --sol: #f2c230; --tinta: #0e1d0e; --texto: #3a4638; --suave: #64705f; --branco: #fff;
+  --raio: 18px; --max: 1180px;
+  --sombra: 0 1px 2px rgba(14,29,14,.06), 0 12px 32px -12px rgba(14,29,14,.18);
+  --ease: cubic-bezier(.2,.7,.2,1);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; -webkit-text-size-adjust: 100%; }
+body { font: 400 16.5px/1.65 'Work Sans', system-ui, sans-serif; color: var(--texto); background: var(--branco); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+img, video { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+:focus-visible { outline: 3px solid var(--sol); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+h1, h2, h3 { font-family: 'Outfit', sans-serif; color: var(--tinta); line-height: 1.1; letter-spacing: -.02em; }
+.tag { display: inline-block; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11.5px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--verde); }
+
+/* marca (logo nova) */
+.marca { display: inline-flex; align-items: center; }
+.marca img { height: 60px; width: auto; transition: height .3s var(--ease); }
+.topo.rolou .marca img { height: 52px; }
+@media (max-width: 620px) { .marca img, .topo.rolou .marca img { height: 46px; } .topo .wrap { height: 84px; } .topo.rolou .wrap { height: 72px; } }
+footer .marca img { height: 58px; }
+
+/* botões */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; font: 600 16px 'Outfit', sans-serif; border-radius: 999px; padding: 0 26px 0 12px; transition: transform .2s var(--ease), background .2s, box-shadow .2s, color .2s; }
+.btn img { width: 32px; height: 32px; flex: none; }
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: scale(.98); }
+.btn-claro { background: #fff; color: var(--verde-escuro); box-shadow: 0 14px 30px -14px rgba(0,0,0,.6); }
+.btn-claro:hover { background: var(--creme); }
+.btn-verde { background: var(--verde); color: #fff; box-shadow: 0 14px 30px -14px rgba(29,92,31,.8); }
+.btn-verde:hover { background: var(--verde-2); }
+.btn-linha { padding: 0 26px; border: 1.5px solid rgba(255,255,255,.4); color: #fff; }
+.btn-linha:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.7); }
+
+/* topo fixo */
+.topo { position: fixed; inset: 0 0 auto; z-index: 30; transition: background .3s, box-shadow .3s; }
+.topo .wrap { display: flex; align-items: center; justify-content: space-between; height: 100px; transition: height .3s var(--ease); }
+.topo.rolou .wrap { height: 84px; }
+.topo nav { display: flex; align-items: center; gap: 30px; font-size: 14px; font-weight: 600; color: rgba(255,255,255,.82); }
+.topo nav a { padding: 6px 0; position: relative; }
+.topo nav a::after { content: ''; position: absolute; left: 0; right: 100%; bottom: 0; height: 2px; background: var(--sol); transition: right .25s var(--ease); }
+.topo nav a:hover { color: #fff; }
+.topo nav a:hover::after { right: 0; }
+/* hambúrguer (celular e tablet) */
+.hamb { display: none; position: relative; z-index: 2; width: 48px; height: 48px; border-radius: 50%; margin-right: -8px; }
+.hamb span { position: absolute; left: 13px; right: 13px; height: 2px; border-radius: 2px; background: #fff; transition: transform .45s cubic-bezier(.16,1,.3,1), opacity .2s, top .45s cubic-bezier(.16,1,.3,1); }
+.hamb span:nth-child(1) { top: 16px; }
+.hamb span:nth-child(2) { top: 23px; }
+.hamb span:nth-child(3) { top: 30px; }
+.hamb[aria-expanded="true"] span:nth-child(1) { top: 23px; transform: rotate(45deg); }
+.hamb[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.hamb[aria-expanded="true"] span:nth-child(3) { top: 23px; transform: rotate(-45deg); }
+.menu { position: fixed; inset: 0; z-index: 25; background: var(--noite); display: flex; flex-direction: column; justify-content: space-between; padding: 112px 24px 36px; opacity: 0; transition: opacity .35s ease; }
+.menu[hidden] { display: none; }
+.menu:not(.aberto) { pointer-events: none; }
+.menu.aberto { opacity: 1; }
+.menu::before { content: ''; position: absolute; right: -160px; top: -160px; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(242,194,48,.16), transparent 65%); pointer-events: none; }
+.menu nav { display: flex; flex-direction: column; }
+.menu nav a { display: flex; align-items: baseline; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.08); color: #fff; font: 600 30px/1.1 'Outfit', sans-serif; letter-spacing: -.02em; opacity: 0; transform: translateY(14px); transition: opacity .4s ease, transform .6s cubic-bezier(.16,1,.3,1), color .2s; }
+.menu nav a .mono { font-size: 12px; font-weight: 600; letter-spacing: .16em; color: var(--sol); }
+.menu nav a:hover { color: var(--sol); }
+.menu.aberto nav a { opacity: 1; transform: none; }
+.menu.aberto nav a:nth-child(2) { transition-delay: .05s; }
+.menu.aberto nav a:nth-child(3) { transition-delay: .1s; }
+.menu.aberto nav a:nth-child(4) { transition-delay: .15s; }
+.menu.aberto nav a:nth-child(5) { transition-delay: .2s; }
+.menu-pe { display: flex; flex-direction: column; gap: 4px; color: rgba(255,255,255,.7); font-size: 15px; }
+.menu-pe a { display: inline-flex; align-items: center; min-height: 44px; }
+body.travado { overflow: hidden; }
+.mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+.topo.rolou { background: rgba(8,32,10,.88); backdrop-filter: saturate(1.4) blur(12px); -webkit-backdrop-filter: saturate(1.4) blur(12px); box-shadow: 0 1px 0 rgba(255,255,255,.06); }
+
+/* hero */
+.hero { position: relative; min-height: min(100svh, 860px); display: flex; align-items: center; color: #fff; overflow: hidden; background: var(--noite); isolation: isolate; }
+.hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% center; z-index: -2; transform: scale(1.04); animation: assenta 1.6s var(--ease) forwards; }
+.hero::before { content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(180deg, rgba(8,32,10,.55) 0%, rgba(8,32,10,0) 22%),
+              linear-gradient(90deg, rgba(8,32,10,.9) 0%, rgba(8,32,10,.7) 40%, rgba(8,32,10,.1) 78%),
+              linear-gradient(0deg, rgba(8,32,10,.55) 0%, rgba(8,32,10,0) 35%); }
+@keyframes assenta { to { transform: scale(1); } }
+.hero .wrap { width: 100%; padding-top: 140px; padding-bottom: 90px; }
+.hero .tag { color: var(--sol); }
+.hero h1 { color: #fff; font-size: clamp(44px, 7.4vw, 92px); font-weight: 700; max-width: 760px; margin: 18px 0 22px; letter-spacing: -.03em; }
+.hero h1 em { font-style: normal; color: var(--sol); }
+.hero p.lead { font-size: clamp(16.5px, 2vw, 19px); color: rgba(255,255,255,.86); max-width: 500px; }
+.hero .acoes { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; margin-top: 36px; }
+.link-obras { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: #fff; font: 600 15.5px 'Outfit', sans-serif; border-bottom: 1px solid rgba(255,255,255,.35); transition: border-color .2s; }
+.link-obras:hover { border-color: var(--sol); }
+.link-obras svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .25s var(--ease); }
+.link-obras:hover svg { transform: translateY(3px); }
+.faixa { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 56px; border-top: 1px solid rgba(255,255,255,.16); }
+.faixa div { padding: 20px 18px 0 0; }
+.faixa b { display: block; font-family: 'Outfit', sans-serif; color: #fff; font-size: 16px; font-weight: 600; }
+.faixa span { font-size: 13.5px; color: rgba(255,255,255,.65); }
+
+/* seções */
+section { padding: 100px 0; }
+.cab { max-width: 660px; margin-bottom: 44px; }
+.cab h2 { font-size: clamp(32px, 4.4vw, 50px); font-weight: 600; margin-top: 12px; }
+.cab p { margin-top: 14px; color: var(--suave); font-size: 17px; }
+.cab-linha { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 44px; }
+.cab-linha .cab { margin-bottom: 0; }
+
+/* serviços */
+.servicos { background: var(--creme); }
+.cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.card { background: #fff; border-radius: var(--raio); overflow: hidden; box-shadow: var(--sombra); display: flex; flex-direction: column; transition: transform .3s var(--ease), box-shadow .3s; }
+.card:hover { transform: translateY(-4px); box-shadow: 0 1px 2px rgba(14,29,14,.06), 0 24px 44px -18px rgba(14,29,14,.3); }
+.card .foto { aspect-ratio: 4 / 3; overflow: hidden; background: var(--verde-claro); }
+.card .foto img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+.card:hover .foto img { transform: scale(1.05); }
+.card .foto.icone { display: grid; place-items: center; background: linear-gradient(140deg, var(--verde) 0%, var(--verde-escuro) 100%); }
+.card .foto.icone svg { width: 64px; height: 64px; stroke: var(--sol); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.card .corpo { padding: 22px 22px 26px; }
+.card h3 { font-size: 19px; font-weight: 600; margin-bottom: 6px; }
+.card p { font-size: 15px; color: var(--suave); line-height: 1.55; }
+
+/* =====================================================================
+   PORTFÓLIO (seção Obras)
+   Duas versões separadas. Mexer numa não afeta a outra.
+   WEB    = tela de 768px ou mais E com mouse  -> painéis que abrem (estilo Techlar)
+   MOBILE = tela menor que 768px OU tela de toque -> grade 2 colunas com entrada animada
+   ===================================================================== */
+.painel { position: relative; overflow: hidden; border-radius: 14px; background: var(--noite); color: #fff; text-align: left; }
+.painel > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.painel::before { content: ''; position: absolute; inset: 0; z-index: 1; }
+.painel .num { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: .2em; color: rgba(255,255,255,.6); }
+.painel h3 { color: #fff; font-weight: 600; }
+.painel.destaque { background: linear-gradient(150deg, var(--verde) 0%, var(--verde-escuro) 100%); }
+.painel.destaque .num { color: var(--sol); }
+.painel.destaque .cta { font-family: 'JetBrains Mono', monospace; font-weight: 600; letter-spacing: .08em; color: var(--sol); }
+
+@keyframes painelEntra { from { opacity: 0; transform: translateY(70px); } to { opacity: 1; transform: none; } }
+
+/* ---------- WEB ---------- */
+@media (min-width: 768px) and (hover: hover) {
+  .paineis { display: flex; height: 600px; gap: 12px; }
+  .painel { --ease-p: cubic-bezier(.16,1,.3,1); flex: 1 1 0; min-width: 0; transition: flex-grow .9s var(--ease-p); will-change: flex-grow; }
+  .painel.ativo { flex-grow: 4.2; }
+  .painel > img { transform: scale(1.12); filter: brightness(.7) saturate(.75); transition: transform 1.2s var(--ease-p), filter .8s var(--ease-p); }
+  .painel:hover > img { filter: brightness(.85) saturate(.9); }
+  .painel.ativo > img { transform: scale(1); filter: none; }
+  /* entrada em sequência (animação própria, não briga com a abertura) */
+  .paineis.surge { opacity: 1; transform: none; }
+  .paineis .painel { opacity: 0; }
+  .paineis.visto .painel { animation: painelEntra 1s cubic-bezier(.16,1,.3,1) both; }
+  .paineis.visto .painel:nth-child(2) { animation-delay: .08s; }
+  .paineis.visto .painel:nth-child(3) { animation-delay: .16s; }
+  .paineis.visto .painel:nth-child(4) { animation-delay: .24s; }
+  .paineis.visto .painel:nth-child(5) { animation-delay: .32s; }
+  .paineis.visto .painel:nth-child(6) { animation-delay: .4s; }
+  .painel::before { background: linear-gradient(0deg, rgba(8,32,10,.95) 0%, rgba(8,32,10,.5) 45%, rgba(8,32,10,.2) 100%); transition: opacity .8s var(--ease-p); }
+  .painel.ativo::before { opacity: .75; }
+  /* rótulo vertical (card fechado) */
+  .painel .rotulo { position: absolute; inset: auto 0 0 0; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 24px 0; transition: opacity .3s ease .3s; }
+  .painel .rotulo b { writing-mode: vertical-rl; transform: rotate(180deg); font: 600 19px 'Outfit', sans-serif; white-space: nowrap; color: #fff; }
+  .painel.ativo .rotulo { opacity: 0; transition-delay: 0s; transition-duration: .2s; }
+  /* texto (card aberto): largura fixa para não reorganizar durante a animação */
+  .painel .txt { position: absolute; left: 0; bottom: 0; z-index: 2; width: 440px; max-width: 100vw; padding: 28px; display: flex; flex-direction: column; gap: 10px; opacity: 0; transform: translateY(14px); transition: opacity .2s ease, transform .2s ease; }
+  .painel.ativo .txt { opacity: 1; transform: none; transition: opacity .6s ease .3s, transform .8s var(--ease-p) .3s; }
+  .painel h3 { font-size: 30px; }
+  .painel p { font-size: 15.5px; color: rgba(255,255,255,.85); max-width: 360px; }
+  .painel .ver { position: absolute; top: 18px; right: 18px; z-index: 2; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,.14); backdrop-filter: blur(6px); display: grid; place-items: center; opacity: 0; transition: opacity .3s; }
+  .painel .ver svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; }
+  .painel.ativo .ver { opacity: 1; transition-delay: .4s; }
+  .painel.destaque::before { background: radial-gradient(circle at 85% 10%, rgba(242,194,48,.28), transparent 55%); opacity: 1; }
+  .painel.destaque h3 { font-size: 34px; }
+  .painel.destaque p { font: 500 20px/1.35 'Outfit', sans-serif; color: rgba(255,255,255,.9); }
+  .painel.destaque .cta { margin-top: 8px; font-size: 13px; }
+}
+@media (min-width: 768px) and (max-width: 1000px) and (hover: hover) {
+  .paineis { height: 520px; gap: 8px; }
+  .painel .rotulo b { font-size: 16px; }
+  .painel.ativo { flex-grow: 4.6; }
+  .painel .txt { width: 310px; padding: 20px; }
+  .painel p { font-size: 14.5px; }
+  .painel.destaque p { font-size: 17px; }
+  .painel h3, .painel.destaque h3 { font-size: 24px; }
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 767.98px), (hover: none) {
+  .paineis { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; opacity: 1 !important; transform: none !important; }
+  .painel { display: block; height: 172px; opacity: 0; transform: translateY(22px) scale(.97); transition: opacity .6s ease, transform .8s cubic-bezier(.16,1,.3,1); -webkit-tap-highlight-color: transparent; }
+  .paineis.visto .painel { opacity: 1; transform: none; }
+  .paineis.visto .painel:nth-child(2) { transition-delay: .07s; }
+  .paineis.visto .painel:nth-child(3) { transition-delay: .14s; }
+  .paineis.visto .painel:nth-child(4) { transition-delay: .21s; }
+  .paineis.visto .painel:nth-child(5) { transition-delay: .28s; }
+  .paineis.visto .painel:nth-child(6) { transition-delay: .35s; }
+  .painel > img { transform: scale(1.15); transition: transform 1.6s cubic-bezier(.16,1,.3,1); }
+  .paineis.visto .painel > img { transform: scale(1); }
+  .paineis.visto .painel:active { transform: scale(.97); transition: transform .15s ease; transition-delay: 0s; }
+  .painel::before { background: linear-gradient(0deg, rgba(8,32,10,.92) 0%, rgba(8,32,10,.35) 55%, rgba(8,32,10,.1) 100%); }
+  .painel .rotulo, .painel p { display: none; }
+  .painel .ver { position: absolute; top: 10px; right: 10px; z-index: 2; width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,.16); backdrop-filter: blur(6px); display: grid; place-items: center; }
+  .painel .ver svg { width: 14px; height: 14px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; }
+  .painel .txt { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 14px; display: flex; flex-direction: column; gap: 4px; }
+  .painel h3 { font-size: 15.5px; }
+  .painel:nth-child(5) { grid-column: span 2; }
+  .painel.destaque { grid-column: span 2; height: 150px; }
+  .painel.destaque::before { background: radial-gradient(circle at 90% 0%, rgba(242,194,48,.3), transparent 60%); }
+  .painel.destaque h3 { font-size: 20px; }
+  .painel.destaque .cta { margin-top: 4px; font-size: 12px; }
+}
+
+/* em vídeo */
+.emvideo { background: var(--creme); overflow: hidden; }
+.emvideo .wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: center; }
+.emvideo .cab { margin-bottom: 0; }
+.ig { display: flex; align-items: center; gap: 16px; margin-top: 34px; padding: 16px 20px 16px 16px; background: #fff; border-radius: 18px; box-shadow: var(--sombra); max-width: 420px; transition: transform .3s var(--ease), box-shadow .3s; }
+.ig:hover { transform: translateY(-3px); box-shadow: 0 1px 2px rgba(14,29,14,.06), 0 22px 40px -18px rgba(14,29,14,.32); }
+.ig .ico { flex: none; width: 52px; height: 52px; border-radius: 15px; display: grid; place-items: center; background: radial-gradient(circle at 30% 110%, #fdc468 0%, #fa7e1e 25%, #d62976 55%, #962fbf 80%, #4f5bd5 100%); }
+.ig .ico svg { width: 26px; height: 26px; stroke: #fff; fill: none; stroke-width: 2; }
+.ig b { display: block; font: 600 17px 'Outfit', sans-serif; color: var(--tinta); }
+.ig small { display: block; font-size: 14px; color: var(--suave); }
+.ig .seta { margin-left: auto; width: 20px; height: 20px; stroke: var(--verde); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .25s var(--ease); }
+.ig:hover .seta { transform: translateX(4px); }
+.videos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; }
+.video { position: relative; border-radius: 22px; overflow: hidden; background: var(--noite); aspect-ratio: 9 / 15; box-shadow: 0 30px 60px -30px rgba(8,32,10,.55); }
+.video:nth-child(2) { margin-top: 56px; }
+.video video { width: 100%; height: 100%; object-fit: cover; }
+.video::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(8,32,10,.85) 0%, rgba(8,32,10,0) 42%), linear-gradient(180deg, rgba(8,32,10,.45) 0%, rgba(8,32,10,0) 22%); pointer-events: none; }
+.video .chip { position: absolute; top: 16px; left: 16px; z-index: 1; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #fff; background: rgba(255,255,255,.14); backdrop-filter: blur(8px); padding: 7px 12px; border-radius: 999px; }
+.video figcaption { position: absolute; left: 20px; right: 20px; bottom: 26px; z-index: 1; color: #fff; }
+.video figcaption b { display: block; font: 600 21px/1.2 'Outfit', sans-serif; }
+.video figcaption span { font-size: 14px; color: rgba(255,255,255,.75); }
+.video .barra { position: absolute; left: 20px; right: 20px; bottom: 14px; z-index: 1; height: 3px; border-radius: 3px; background: rgba(255,255,255,.22); overflow: hidden; }
+.video .barra i { display: block; height: 100%; width: 100%; background: var(--sol); transform-origin: left; transform: scaleX(0); }
+.video .pausa { position: absolute; top: 12px; right: 12px; z-index: 1; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,.14); display: grid; place-items: center; backdrop-filter: blur(8px); transition: background .2s; }
+.video .pausa:hover { background: rgba(255,255,255,.28); }
+.video .pausa svg { width: 15px; height: 15px; fill: #fff; }
+.video .pausa .i-play { display: none; }
+.video.parado .pausa .i-play { display: block; }
+.video.parado .pausa .i-pause { display: none; }
+
+/* como funciona */
+.como { background: var(--noite); color: rgba(255,255,255,.78); position: relative; overflow: hidden; }
+.como::before { content: ''; position: absolute; right: -180px; top: -180px; width: 520px; height: 520px; border-radius: 50%; background: radial-gradient(circle, rgba(242,194,48,.18), transparent 65%); }
+.como .cab h2 { color: #fff; }
+.como .cab p { color: rgba(255,255,255,.68); }
+.como .tag { color: var(--sol); }
+.passos { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; counter-reset: passo; list-style: none; }
+.passos::before { content: ''; position: absolute; left: 24px; right: 24px; top: 24px; height: 1px; background: linear-gradient(90deg, var(--sol), rgba(242,194,48,.15)); }
+.passo { position: relative; }
+.passo::before { counter-increment: passo; content: counter(passo); display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: var(--noite); border: 1.5px solid var(--sol); color: var(--sol); font: 500 15px 'JetBrains Mono', monospace; margin-bottom: 22px; position: relative; }
+.passo h3 { color: #fff; font-size: 19px; font-weight: 600; margin-bottom: 8px; }
+.passo p { font-size: 15px; line-height: 1.6; }
+
+/* região */
+.regiao .wrap { display: grid; grid-template-columns: 1fr 1.15fr; gap: 56px; align-items: center; }
+.regiao h2 { font-size: clamp(32px, 4.4vw, 48px); font-weight: 600; margin-top: 12px; }
+.regiao p { margin-top: 14px; color: var(--suave); font-size: 17px; }
+.end { display: flex; gap: 12px; align-items: flex-start; font-style: normal; margin-top: 22px; color: var(--tinta); font-weight: 500; line-height: 1.5; }
+.end svg { width: 22px; height: 22px; flex: none; margin-top: 2px; stroke: var(--verde); fill: none; stroke-width: 2; }
+.regiao ul { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin: 26px 0 30px; }
+.regiao li { background: var(--verde-claro); color: var(--verde-escuro); font-weight: 600; font-size: 14px; padding: 8px 16px; border-radius: 999px; }
+.mapa { border-radius: 22px; overflow: hidden; aspect-ratio: 4 / 3.2; box-shadow: var(--sombra); background: var(--verde-claro); }
+.mapa iframe { width: 100%; height: 100%; border: 0; filter: saturate(.85); }
+
+/* chamada final */
+.final { position: relative; color: #fff; overflow: hidden; isolation: isolate; padding: 120px 0; text-align: center; }
+.final > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.final::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(15,51,17,.92), rgba(8,32,10,.95)); }
+.final .tag { color: var(--sol); }
+.final h2 { color: #fff; font-size: clamp(34px, 5vw, 58px); font-weight: 600; max-width: 760px; margin: 14px auto 16px; }
+.final p { color: rgba(255,255,255,.82); max-width: 520px; margin: 0 auto 34px; font-size: 17px; }
+.fones { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 40px; }
+.fones a { font: 600 clamp(26px, 3.4vw, 34px) 'Outfit', sans-serif; color: #fff; letter-spacing: -.01em; padding: 6px 0; border-bottom: 2px solid rgba(242,194,48,.5); transition: border-color .2s, color .2s; }
+.fones a:hover { color: var(--sol); border-color: var(--sol); }
+
+/* rodapé */
+footer { background: var(--noite); color: rgba(255,255,255,.66); font-size: 14px; padding: 44px 0 30px; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 22px; }
+footer .contato { display: flex; flex-wrap: wrap; gap: 10px 26px; }
+footer a:hover { color: #fff; }
+footer .contato a { display: inline-flex; align-items: center; min-height: 44px; }
+.onfloor a { padding: 10px; margin: -10px; }
+.credito { width: 100%; border-top: 1px solid rgba(255,255,255,.1); padding-top: 20px; font-size: 12.5px; color: rgba(255,255,255,.45); }
+.credito { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; }
+.onfloor { display: flex; align-items: center; gap: 8px; }
+.onfloor a { display: block; opacity: .6; transition: opacity .2s; }
+.onfloor a:hover { opacity: 1; }
+.onfloor img { height: 24px; width: auto; }
+
+/* WhatsApp flutuante (mesmo ícone da Techlar) */
+.flutuante { position: fixed; right: 18px; bottom: 18px; z-index: 40; width: 62px; height: 62px; border-radius: 50%; filter: drop-shadow(0 10px 18px rgba(0,0,0,.3)); transition: transform .25s var(--ease); }
+.flutuante:hover { transform: scale(1.07); }
+.flutuante img { width: 100%; height: 100%; }
+
+/* ampliar foto */
+dialog.zoom { border: 0; padding: 0; background: transparent; max-width: min(1100px, 94vw); max-height: 90vh; margin: auto; }
+dialog.zoom::backdrop { background: rgba(5,18,6,.9); backdrop-filter: blur(4px); }
+dialog.zoom img { max-width: 100%; max-height: 82vh; border-radius: 12px; margin: 0 auto; }
+dialog.zoom p { color: #fff; text-align: center; font-weight: 600; margin-top: 12px; }
+dialog.zoom .fechar { position: fixed; top: 16px; right: 16px; width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,.12); color: #fff; font-size: 26px; line-height: 1; }
+
+/* entrada suave */
+.surge { opacity: 0; transform: translateY(18px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.surge.visto { opacity: 1; transform: none; }
+
+@media (max-width: 1000px) {
+  .cards { grid-template-columns: repeat(2, 1fr); }
+  .passos { grid-template-columns: repeat(2, 1fr); row-gap: 40px; }
+  .passos::before { display: none; }
+  .regiao .wrap, .emvideo .wrap { grid-template-columns: 1fr; gap: 36px; }
+  .video:nth-child(2) { margin-top: 36px; }
+  .topo nav { display: none; }
+  .hamb { display: block; }
+}
+@media (max-width: 620px) {
+  body { font-size: 16px; }
+  section { padding: 72px 0; }
+  .hero .wrap { padding-bottom: 64px; }
+  .hero h1 { font-size: 46px; }
+  .hero::before { background: linear-gradient(180deg, rgba(8,32,10,.6) 0%, rgba(8,32,10,.78) 45%, rgba(8,32,10,.9) 100%); }
+  .cards { grid-template-columns: 1fr; }
+  .card { flex-direction: row; }
+  .card .foto { width: 38%; aspect-ratio: auto; flex: none; }
+  .card .foto.icone svg { width: 44px; height: 44px; }
+  .card .corpo { padding: 18px 18px 20px; }
+  .card h3 { font-size: 16.5px; }
+  .card p { font-size: 14px; }
+  .passos { grid-template-columns: 1fr; row-gap: 30px; }
+  .videos { gap: 12px; }
+  .video { border-radius: 16px; }
+  .video .chip { top: 10px; left: 10px; font-size: 10px; padding: 5px 9px; }
+  .video .chip .cl { display: none; }
+  .video .pausa { top: 6px; right: 6px; }
+  .video figcaption { left: 12px; right: 12px; bottom: 20px; }
+  .video figcaption b { font-size: 16px; }
+  .video figcaption span { font-size: 12.5px; }
+  .video .barra { left: 12px; right: 12px; bottom: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .surge, .paineis .painel { opacity: 1 !important; transform: none !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="topo" id="topo">
+  <div class="wrap">
+    <a href="#" class="marca" aria-label="JMMG Energia Solar, início"><img src="assets/logo/logo-branca.webp" alt="JMMG Energia Solar" width="126" height="50"></a>
+    <nav aria-label="Seções">
+      <a href="#servicos">Serviços</a>
+      <a href="#obras">Obras</a>
+      <a href="#como">Como funciona</a>
+      <a href="#regiao">Região</a>
+    </nav>
+    <button class="hamb" id="hamb" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <nav aria-label="Menu">
+    <a href="#servicos"><span class="mono">01</span>Serviços</a>
+    <a href="#obras"><span class="mono">02</span>Obras</a>
+    <a href="#videos"><span class="mono">03</span>Em vídeo</a>
+    <a href="#como"><span class="mono">04</span>Como funciona</a>
+    <a href="#regiao"><span class="mono">05</span>Região</a>
+  </nav>
+  <div class="menu-pe">
+    <a href="https://wa.me/5561999227234?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20de%20energia%20solar." target="_blank" rel="noopener">(61) 99922-7234</a>
+    <a href="https://wa.me/5561995794990?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20de%20energia%20solar." target="_blank" rel="noopener">(61) 99579-4990</a>
+    <a href="https://instagram.com/jmmgenergiasolar" target="_blank" rel="noopener">@jmmgenergiasolar</a>
+  </div>
+</div>
+
+<main>
+  <section class="hero" aria-labelledby="titulo">
+    <img src="assets/web/hero.webp" srcset="assets/web/hero-900.webp 900w, assets/web/hero.webp 1672w" sizes="100vw" alt="Usina solar no solo instalada pela JMMG, vista de cima" fetchpriority="high">
+    <div class="wrap">
+      <span class="tag">Energia solar no Distrito Federal</span>
+      <h1 id="titulo">Geração <em>própria</em> de energia.</h1>
+      <p class="lead">Projeto, instalação e limpeza de placas solares para casas, empresas e propriedades rurais no DF.</p>
+      <div class="acoes">
+        <a class="link-obras" href="#obras">Ver obras feitas <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="servicos" id="servicos">
+    <div class="wrap">
+      <div class="cab surge">
+        <span class="tag">Serviços</span>
+        <h2>Energia do sol, do projeto à manutenção.</h2>
+        <p>Cada sistema é dimensionado para o seu consumo e para o lugar da instalação.</p>
+      </div>
+      <div class="cards">
+        <article class="card surge">
+          <div class="foto"><img src="assets/web/telhado-ceramico-720.webp" alt="Placas solares em telhado de telha cerâmica" loading="lazy" width="720" height="720"></div>
+          <div class="corpo"><h3>Residencial</h3><p>Sistema fotovoltaico para a sua casa, em telhado cerâmico, fibrocimento ou laje.</p></div>
+        </article>
+        <article class="card surge">
+          <div class="foto icone" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M8 7h2M14 7h2M8 11h2M14 11h2M8 15h2M14 15h2M10 21v-3h4v3"/></svg></div>
+          <div class="corpo"><h3>Empresas</h3><p>Geração própria para comércios e prédios, com passarela para manutenção.</p></div>
+        </article>
+        <article class="card surge">
+          <div class="foto"><img src="assets/web/usina-aerea-720.webp" alt="Duas usinas solares no solo vistas de cima" loading="lazy" width="720" height="405"></div>
+          <div class="corpo"><h3>Usinas no solo</h3><p>Estruturas no chão para chácaras, sítios e propriedades rurais.</p></div>
+        </article>
+        <article class="card surge">
+          <div class="foto icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3c3 4 6 6.6 6 10a6 6 0 0 1-12 0c0-3.4 3-6 6-10z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"/></svg></div>
+          <div class="corpo"><h3>Limpeza de placas</h3><p>Placas limpas para o sistema continuar gerando bem ao longo dos anos.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="obras">
+    <div class="wrap">
+      <div class="cab surge">
+        <span class="tag">Portfólio</span>
+        <h2>Instalações feitas pela JMMG.</h2>
+        <p>Do telhado de casa à usina no campo.</p>
+      </div>
+      <div class="paineis surge" id="paineis">
+        <button class="painel ativo" data-zoom="assets/web/usina-aerea.webp" aria-label="Usinas no solo, ampliar foto"><img src="assets/web/usina-aerea-720.webp" alt="Duas usinas solares no solo vistas de cima, cercadas de mata" loading="lazy" style="object-position:center"><span class="ver" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8.5v5M8.5 11h5"/></svg></span><span class="rotulo" aria-hidden="true"><b>Usinas no solo</b><span class="num">01</span></span><span class="txt"><span class="num">01</span><h3>Usinas no solo</h3><p>Duas usinas no chão, lado a lado, vistas de cima.</p></span></button>
+        <button class="painel" data-zoom="assets/web/telhado-ceramico.webp" aria-label="Telhado cerâmico, ampliar foto"><img src="assets/web/telhado-ceramico-720.webp" alt="Placas solares em telhado cerâmico" loading="lazy" style="object-position:center"><span class="ver" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8.5v5M8.5 11h5"/></svg></span><span class="rotulo" aria-hidden="true"><b>Telhado cerâmico</b><span class="num">02</span></span><span class="txt"><span class="num">02</span><h3>Telhado cerâmico</h3><p>Placas fixadas sobre telha cerâmica.</p></span></button>
+        <button class="painel" data-zoom="assets/web/usina-fileiras.webp" aria-label="Fileiras no solo, ampliar foto"><img src="assets/web/usina-fileiras-720.webp" alt="Seis fileiras de placas solares em usina no solo, vista de cima" loading="lazy" style="object-position:center"><span class="ver" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8.5v5M8.5 11h5"/></svg></span><span class="rotulo" aria-hidden="true"><b>Fileiras no solo</b><span class="num">03</span></span><span class="txt"><span class="num">03</span><h3>Fileiras no solo</h3><p>Seis fileiras de placas alinhadas em terreno aberto.</p></span></button>
+        <button class="painel" data-zoom="assets/web/telhado-fibrocimento.webp" aria-label="Fibrocimento, ampliar foto"><img src="assets/web/telhado-fibrocimento-720.webp" alt="Fileira de placas solares sobre telhado de fibrocimento" loading="lazy" style="object-position:center 30%"><span class="ver" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8.5v5M8.5 11h5"/></svg></span><span class="rotulo" aria-hidden="true"><b>Fibrocimento</b><span class="num">04</span></span><span class="txt"><span class="num">04</span><h3>Fibrocimento</h3><p>Sistema montado sobre telhado de fibrocimento.</p></span></button>
+        <button class="painel" data-zoom="assets/web/inversor.webp" aria-label="Inversor e proteção, ampliar foto"><img src="assets/web/inversor-720.webp" alt="Abrigo com inversor e quadro de proteção ao lado das placas" loading="lazy" style="object-position:center"><span class="ver" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8.5v5M8.5 11h5"/></svg></span><span class="rotulo" aria-hidden="true"><b>Inversor e proteção</b><span class="num">05</span></span><span class="txt"><span class="num">05</span><h3>Inversor e proteção</h3><p>Abrigo com o inversor e o quadro de proteção ao lado das placas.</p></span></button>
+        <a class="painel destaque" href="https://wa.me/5561999227234?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20de%20energia%20solar." target="_blank" rel="noopener"><span class="rotulo" aria-hidden="true"><b>O seu projeto</b><span class="num">06</span></span><span class="txt"><span class="num">06</span><h3>O seu projeto</h3><p>Mande a sua conta de luz e a JMMG dimensiona o sistema para a sua casa, empresa ou propriedade.</p><span class="cta">Fale com a JMMG →</span></span></a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="emvideo" id="videos">
+    <div class="wrap">
+      <div>
+        <div class="cab surge">
+          <span class="tag">Em vídeo</span>
+          <h2>Veja a JMMG em obra.</h2>
+          <p>Duas instalações da JMMG: uma casa com telhado cerâmico e a laje de um prédio comercial, com passarela para manutenção.</p>
+        </div>
+        <a class="ig surge" href="https://instagram.com/jmmgenergiasolar" target="_blank" rel="noopener">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="#fff"/></svg></span>
+          <span><b>@jmmgenergiasolar</b><small>Mais obras no Instagram</small></span>
+          <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="videos">
+        <figure class="video surge"><video data-src="assets/web/telhado.mp4" poster="assets/web/telhado-poster.webp" muted loop playsinline preload="none" aria-label="Vídeo: placas solares em telhado cerâmico de residência"></video><span class="chip">01<span class="cl"> · Residência</span></span><button class="pausa" aria-label="Pausar vídeo"><svg class="i-pause" viewBox="0 0 16 16"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg><svg class="i-play" viewBox="0 0 16 16"><path d="M4 2.5v11l9.5-5.5z"/></svg></button><figcaption><b>Telhado cerâmico</b><span>Sistema residencial</span></figcaption><span class="barra" aria-hidden="true"><i></i></span></figure>
+        <figure class="video surge"><video data-src="assets/web/laje.mp4" poster="assets/web/laje-poster.webp" muted loop playsinline preload="none" aria-label="Vídeo: placas solares na laje de prédio comercial"></video><span class="chip">02<span class="cl"> · Empresa</span></span><button class="pausa" aria-label="Pausar vídeo"><svg class="i-pause" viewBox="0 0 16 16"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg><svg class="i-play" viewBox="0 0 16 16"><path d="M4 2.5v11l9.5-5.5z"/></svg></button><figcaption><b>Laje de prédio</b><span>Com passarela de manutenção</span></figcaption><span class="barra" aria-hidden="true"><i></i></span></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="como" id="como">
+    <div class="wrap">
+      <div class="cab surge">
+        <span class="tag">Como funciona</span>
+        <h2>Simples do começo ao fim.</h2>
+        <p>Você fala com a gente pelo WhatsApp e acompanha cada etapa.</p>
+      </div>
+      <ol class="passos">
+        <li class="passo surge"><h3>Orçamento</h3><p>Você manda a sua conta de luz e a gente calcula o sistema ideal.</p></li>
+        <li class="passo surge"><h3>Projeto</h3><p>Dimensionamento das placas para o seu consumo e para o local.</p></li>
+        <li class="passo surge"><h3>Instalação</h3><p>Montagem das placas e do inversor no telhado, na laje ou no solo.</p></li>
+        <li class="passo surge"><h3>Ligação</h3><p>Sistema homologado com a distribuidora e gerando energia.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="regiao" id="regiao">
+    <div class="wrap">
+      <div class="surge">
+        <span class="tag">Onde atendemos</span>
+        <h2>Saindo de Brazlândia para todo o DF.</h2>
+        <p>Casas, comércios, prédios e propriedades rurais. Chame no WhatsApp e confirme o atendimento na sua região.</p>
+        <address class="end"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Quadra 57, Conjunto O, Casa 16<br>Brazlândia, Brasília/DF · <span style="white-space:nowrap">CEP 72755-243</span></span></address>
+        <ul><li>Residências</li><li>Comércios</li><li>Prédios</li><li>Chácaras e fazendas</li></ul>
+      </div>
+      <div class="mapa surge"><iframe title="Mapa: JMMG Energia Solar em Brazlândia, DF" src="https://www.google.com/maps?q=Q.%2057%20Conjunto%20O%20Casa%2016%2C%20Brazl%C3%A2ndia%2C%20Bras%C3%ADlia%20-%20DF%2C%2072755-243&z=13&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    </div>
+  </section>
+
+  <section class="final" id="contato">
+    <img src="assets/web/usina-fileiras-720.webp" alt="" loading="lazy">
+    <div class="wrap surge">
+      <span class="tag">Orçamento sem compromisso</span>
+      <h2>Quer gerar a sua própria energia?</h2>
+      <p>Chame a JMMG no WhatsApp e mande a sua conta de luz. É só tocar num dos números.</p>
+      <div class="fones">
+        <a href="https://wa.me/5561999227234?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20de%20energia%20solar." target="_blank" rel="noopener">(61) 99922-7234</a>
+        <a href="https://wa.me/5561995794990?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20de%20energia%20solar." target="_blank" rel="noopener">(61) 99579-4990</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="marca"><img src="assets/logo/logo-branca.webp" alt="JMMG Energia Solar" width="146" height="58" loading="lazy"></span>
+    <div class="contato">
+      <a href="https://wa.me/5561999227234" target="_blank" rel="noopener">(61) 99922-7234</a>
+      <a href="https://wa.me/5561995794990" target="_blank" rel="noopener">(61) 99579-4990</a>
+      <a href="https://instagram.com/jmmgenergiasolar" target="_blank" rel="noopener">@jmmgenergiasolar</a>
+    </div>
+    <div class="credito"><p>© 2026 JMMG Energia Solar · Q. 57, Conj. O, Casa 16, Brazlândia, Brasília/DF</p><div class="onfloor"><span>Desenvolvido por</span><a href="https://onfloor.com.br" target="_blank" rel="noopener noreferrer"><img src="assets/icones/onfloor.png" alt="OnFloor" width="24" height="24" loading="lazy"></a></div></div>
+  </div>
+</footer>
+
+<a class="flutuante" href="https://wa.me/5561999227234?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20de%20energia%20solar." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <img src="assets/icones/whatsapp-128.png" alt="" width="62" height="62">
+</a>
+
+<dialog class="zoom" id="zoom" aria-label="Foto ampliada">
+  <button class="fechar" aria-label="Fechar">×</button>
+  <img alt=""><p></p>
+</dialog>
+
+<script>
+(() => {
+  const calmo = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // topo ganha fundo ao rolar
+  const topo = document.getElementById('topo');
+  const marcar = () => topo.classList.toggle('rolou', scrollY > 40);
+  marcar(); addEventListener('scroll', marcar, { passive: true });
+
+  // menu (hambúrguer)
+  const hamb = document.getElementById('hamb'), menu = document.getElementById('menu');
+  const abrir = (sim) => {
+    hamb.setAttribute('aria-expanded', sim); hamb.setAttribute('aria-label', sim ? 'Fechar menu' : 'Abrir menu');
+    document.body.classList.toggle('travado', sim); topo.classList.toggle('rolou', sim || scrollY > 40);
+    if (sim) { menu.hidden = false; requestAnimationFrame(() => requestAnimationFrame(() => menu.classList.add('aberto'))); }
+    else { menu.classList.remove('aberto'); setTimeout(() => { if (!menu.classList.contains('aberto')) menu.hidden = true; }, 350); }
+  };
+  hamb.addEventListener('click', () => abrir(hamb.getAttribute('aria-expanded') !== 'true'));
+  menu.querySelectorAll('nav a').forEach((a) => a.addEventListener('click', () => abrir(false)));
+  addEventListener('keydown', (e) => { if (e.key === 'Escape' && hamb.getAttribute('aria-expanded') === 'true') { abrir(false); hamb.focus(); } });
+
+  // entrada suave
+  const io = new IntersectionObserver((es) => es.forEach((e) => {
+    if (e.isIntersecting) { e.target.classList.add('visto'); io.unobserve(e.target); }
+  }), { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.surge').forEach((el, i) => { el.style.transitionDelay = (i % 4) * 70 + 'ms'; io.observe(el); });
+
+  // vídeos: só carregam e tocam quando aparecem na tela
+  document.querySelectorAll('.video').forEach((fig) => {
+    const v = fig.querySelector('video'), b = fig.querySelector('.pausa');
+    let manual = calmo;
+    if (calmo) fig.classList.add('parado');
+    const tocar = () => { if (!v.src) v.src = v.dataset.src; v.play().catch(() => {}); fig.classList.remove('parado'); b.setAttribute('aria-label', 'Pausar vídeo'); };
+    const parar = () => { v.pause(); fig.classList.add('parado'); b.setAttribute('aria-label', 'Tocar vídeo'); };
+    new IntersectionObserver(([e]) => { if (e.isIntersecting && !manual) tocar(); else if (!e.isIntersecting) v.pause(); }, { threshold: .35 }).observe(fig);
+    b.addEventListener('click', () => { if (v.paused) { manual = false; tocar(); } else { manual = true; parar(); } });
+    const barra = fig.querySelector('.barra i');
+    const andar = () => { if (v.duration) barra.style.transform = `scaleX(${v.currentTime / v.duration})`; if (!v.paused) requestAnimationFrame(andar); };
+    v.addEventListener('play', () => requestAnimationFrame(andar));
+  });
+
+  // painéis: o que está em foco se abre (computador)
+  const paineis = [...document.querySelectorAll('.painel')];
+  const ativar = (p) => paineis.forEach((x) => x.classList.toggle('ativo', x === p));
+  const largo = matchMedia('(min-width: 768px) and (hover: hover)');
+  let espera;
+  paineis.forEach((p) => {
+    p.addEventListener('mouseenter', () => { if (!largo.matches) return; clearTimeout(espera); espera = setTimeout(() => ativar(p), 70); });
+    p.addEventListener('mouseleave', () => clearTimeout(espera));
+    p.addEventListener('focus', () => largo.matches && ativar(p));
+  });
+
+  // ampliar foto
+  const dlg = document.getElementById('zoom'), zi = dlg.querySelector('img'), zp = dlg.querySelector('p');
+  document.querySelectorAll('[data-zoom]').forEach((b) => b.addEventListener('click', () => {
+    const img = b.querySelector('img');
+    zi.src = b.dataset.zoom; zi.alt = img.alt; zp.textContent = b.querySelector('h3').textContent;
+    dlg.showModal();
+  }));
+  dlg.addEventListener('click', (e) => { if (e.target === dlg || e.target.closest('.fechar')) dlg.close(); });
+})();
+</script>
+</body>
+</html>
